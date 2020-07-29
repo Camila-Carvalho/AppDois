@@ -11,11 +11,16 @@ import { Oferta } from './../shared/oferta.model';
 export class HomeComponent implements OnInit {
 
   public ofertas: Oferta[]
-
+ 
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
-    this.ofertas = this.ofertasService.getOfertas()
+    
+    this.ofertasService.getOfertas2()
+    .then(( ofertas: Oferta[]) => { //método THEN executa uma ação quando ela estiver resolvida. Entre parenteses fica o tipo de retorno
+      this.ofertas = ofertas //aqui fica especificado o que deve ser feito com o retorno
+    }) 
+      
   }
 
 }
