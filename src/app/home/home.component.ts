@@ -21,8 +21,7 @@ export class HomeComponent implements OnInit {
     .then(( ofertas: Oferta[]) => { //método THEN executa uma ação quando ela estiver resolvida. Entre parenteses fica o tipo de retorno
       this.ofertas = ofertas //aqui fica especificado o que deve ser feito com o retorno
     })
-    .catch((param: any) => {console.log(param)})
-      
+    .catch((param: any) => {console.log(param)}) //reject
   }
 
 }

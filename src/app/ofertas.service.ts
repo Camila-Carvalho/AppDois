@@ -1,7 +1,11 @@
 import { Oferta } from './shared/oferta.model';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-
+@Injectable()
 export class OfertasService {
+
+    constructor(private http: HttpClient){}
 
     public ofertas: Oferta[] = [
         {
@@ -63,7 +67,7 @@ export class OfertasService {
     public getOfertas2(): Promise<Oferta[]> {
         //instanciar a promise (nativo js), ela espera uma ação que pode ser resolvida ou rejeitada
         return new Promise((resolve, reject) => {
-            let retorno: boolean = false
+            let retorno: boolean = true
             //processamento, que ao finalizar, chama a função de resolve ou reject
             if (retorno) {
                 resolve(this.ofertas)
