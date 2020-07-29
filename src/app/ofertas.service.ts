@@ -60,11 +60,17 @@ export class OfertasService {
     }
 
     //método que chama a promise
-    public getOfertas2(): Promise<Oferta[]>{
+    public getOfertas2(): Promise<Oferta[]> {
         //instanciar a promise (nativo js), ela espera uma ação que pode ser resolvida ou rejeitada
         return new Promise((resolve, reject) => {
+            let retorno: boolean = false
             //processamento, que ao finalizar, chama a função de resolve ou reject
-            resolve(this.ofertas)
+            if (retorno) {
+                resolve(this.ofertas)
+            }
+            else {
+                reject({codigo_erro: 404, message_erro: 'Serviço não encontrado'})
+            }
         })
     }
 }
