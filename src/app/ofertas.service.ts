@@ -13,7 +13,7 @@ export class OfertasService {
     constructor(private http: HttpClient){}
 
     ofertas(): Observable<Oferta[]> {
-        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas`)
+        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?destaque=true`)
     }
 
 }
