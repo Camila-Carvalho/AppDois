@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 
 import { APPDOIS_API } from './app.api';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 
 @Injectable()
@@ -12,8 +12,12 @@ export class OfertasService {
 
     constructor(private http: HttpClient){}
 
-    ofertas(): Observable<Oferta[]> {
+    getOfertas(): Observable<Oferta[]> {
         return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?destaque=true`)
+    }
+
+    getOfertasCategoria(categoria: string): Observable<Oferta[]>{
+        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?categoria=${categoria}`)
     }
 
 }
