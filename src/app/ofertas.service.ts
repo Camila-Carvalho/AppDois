@@ -4,11 +4,14 @@ import { Injectable } from '@angular/core';
 
 
 import { APPDOIS_API } from './app.api';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from "rxjs/operators";
 
 
 @Injectable()
 export class OfertasService {
+
+    resposta: any
 
     constructor(private http: HttpClient){}
 
@@ -20,22 +23,12 @@ export class OfertasService {
         return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?categoria=${categoria}`)
     }
 
-}
-
-
-/*
-export class OfertasService {
-
-    constructor(private http: HttpClient){}
-
-    public getOfertas(): Promise<Oferta[]> {
-        //efetuar uma requisição http
-        return this.http.get('http://localhost:3000/ofertas')
-            .toPromise()
-            .then((resposta: any) => resposta.json())
-        //retornar uma promise Oferta[]
-        
+    getOfertaPorId(id:number): Promise<Oferta>{
+        return this.http.get(`${APPDOIS_API}/ofertas?id=${id}`)
+        .toPromise()
+        .then((resposta: Oferta) => {
+            this.resposta = JSON.stringify(resposta);
+            return resposta[0];
+        })
     }
-
 }
-*/
