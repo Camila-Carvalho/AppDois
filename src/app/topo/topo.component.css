@@ -6,6 +6,10 @@
     background: #006ACB;
 }
 
+.nav-link{
+    color: #b1d1ee;
+}
+
 .nav-link:hover{
     color: #FFF;
 }
@@ -19,7 +23,7 @@
 }
 
 .active{
-    color: #a1c4e6;
+    color: #FFF;
 }
 
 .fixed-top{
