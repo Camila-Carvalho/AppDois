@@ -14,4 +14,17 @@ export class TopoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public pesquisa(termoDeBusca:string): void{
+    console.log(termoDeBusca)
+  }
+
 }
+
+
+/*
+MÉTODO DE PESQUISA USANDO EVENTOS
+public pesquisa(event: Event): void{
+    //evento= objeto; targuet= um dos inputs; necessário o HTMLInputElement para poder pegar o valor (value)
+    console.log((<HTMLInputElement>event.target).value)
+  }
+*/
