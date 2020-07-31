@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Oferta } from './shared/oferta.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,7 +6,6 @@ import { Injectable } from '@angular/core';
 
 import { APPDOIS_API } from './app.api';
 import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
 
 
 @Injectable()
@@ -48,4 +48,7 @@ export class OfertasService {
         })
     }
 
+    public pesquisaOfertas(termo: string): Observable<Oferta[]>{
+        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?descricao_oferta_like=${termo}`)
+    }
 }
