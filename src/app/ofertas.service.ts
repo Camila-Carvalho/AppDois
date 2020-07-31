@@ -15,15 +15,15 @@ export class OfertasService {
 
     constructor(private http: HttpClient){}
 
-    getOfertas(): Observable<Oferta[]> {
+    public getOfertas(): Observable<Oferta[]> {
         return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?destaque=true`)
     }
 
-    getOfertasCategoria(categoria: string): Observable<Oferta[]>{
+    public getOfertasCategoria(categoria: string): Observable<Oferta[]>{
         return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?categoria=${categoria}`)
     }
 
-    getOfertaPorId(id:number): Promise<Oferta>{
+    public getOfertaPorId(id:number): Promise<Oferta>{
         return this.http.get(`${APPDOIS_API}/ofertas?id=${id}`)
         .toPromise()
         .then((resposta: Oferta) => {
@@ -31,4 +31,21 @@ export class OfertasService {
             return resposta[0];
         })
     }
+
+    public getComoUsarOfertaPorId(id: string): Promise<string>{
+        return this.http.get(`${APPDOIS_API}/como-usar?id=${id}`)
+        .toPromise()
+        .then((resposta: any) => {
+            return resposta[0].descricao
+        })
+    }
+
+    public getOndeFicaOfertaPorId(id: string): Promise<string>{
+        return this.http.get(`${APPDOIS_API}/onde-fica?id=${id}`)
+        .toPromise()
+        .then((resposta: any) => {
+            return resposta[0].descricao
+        })
+    }
+
 }
