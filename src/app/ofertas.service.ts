@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 import { APPDOIS_API } from './app.api';
 import { Observable } from 'rxjs';
+import {retry} from 'rxjs/operators'
 
 
 @Injectable()
@@ -49,6 +50,6 @@ export class OfertasService {
     }
 
     public pesquisaOfertas(termo: string): Observable<Oferta[]>{
-        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?descricao_oferta_like=${termo}`)
+        return this.http.get<Oferta[]>(`${APPDOIS_API}/ofertas?descricao_oferta_like=${termo}`).pipe(retry(3)) //retry é para ele tentar realizar a requisição novamente, no caso, coloquei para tentar 3 vezes
     }
 }
