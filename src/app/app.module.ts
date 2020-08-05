@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
+
 import {registerLocaleData} from '@angular/common';
 import localePT from '@angular/common/locales/pt';
-
 registerLocaleData(localePT);
 
 import { ROUTES } from './app.routes';
@@ -20,6 +20,9 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
+//pipe
+import { DescricaoReduzida } from './shared/descricao-reduzida.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,8 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     DiversaoComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
+    DescricaoReduzida
   ],
   imports: [
     BrowserModule,
